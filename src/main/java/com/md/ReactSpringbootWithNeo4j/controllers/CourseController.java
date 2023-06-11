@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -29,24 +30,34 @@ public class CourseController {
     }
 
     @GetMapping("/")
-    public ResponseEntity<List<CourseDTO>> courseIndex(){
-        List<Course> courses = courseService.getAllCourses();
-        List<CourseDTO> responseCourses = courses.stream().map(
-                (course) -> {
-                    CourseDTO responseCourse = new CourseDTO(course.getIdentifier(), course.getTitle(), course.getTeacher());
+    public ResponseEntity<List<CourseDTO>> courseIndex() {
+        List<CourseDTO> responseCourses = courseService.getAllCourses().stream()
+                .map(course -> {
+                    CourseDTO responseCourse = new CourseDTO();
+                    responseCourse.setIdentifier(course.getIdentifier());
+                    responseCourse.setTitle(course.getTitle());
+                    responseCourse.setTeacher(course.getTeacher());
                     responseCourse.setLesson(lessonService.getAllLessonByCourseIdentifier(course.getIdentifier()));
-
                     return responseCourse;
-                }
-        ).toList();
-        return new ResponseEntity<>(responseCourses, HttpStatus.OK);
+                })
+                .collect(Collectors.toList());
+
+        return ResponseEntity.ok(responseCourses);
     }
+
 
     @GetMapping("/{identifier}")
-    public ResponseEntity<CourseDTO> courseDetail(@PathVariable String identifier){
+    public ResponseEntity<CourseDTO> courseDetail(@PathVariable String identifier) {
         Course course = courseService.getCourseByIdentifier(identifier);
-        CourseDTO responseCourse = new CourseDTO(course.getIdentifier(), course.getTitle(), course.getTeacher());
+
+        CourseDTO responseCourse = new CourseDTO();
+        responseCourse.setIdentifier(course.getIdentifier());
+        responseCourse.setTitle(course.getTitle());
+        responseCourse.setTeacher(course.getTeacher());
         responseCourse.setLesson(lessonService.getAllLessonByCourseIdentifier(course.getIdentifier()));
-        return new ResponseEntity<>(responseCourse, HttpStatus.OK);
+
+        return ResponseEntity.ok(responseCourse);
     }
+
 }
+

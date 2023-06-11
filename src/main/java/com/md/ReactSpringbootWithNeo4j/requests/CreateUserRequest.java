@@ -1,8 +1,15 @@
 package com.md.ReactSpringbootWithNeo4j.requests;
 
+import org.apache.catalina.Store;
+
 /**
  *
- * The idea behind creating this 'CreateUserRequest' class is to make relationships between user and courses
+ * The idea behind creating below class is to get all the information from user via REST API
+ * Later we will be passing that information to User class, and then we will save it to a database.
+ * <p>
+ * In short, the class CreateUserRequest is a container that holds the user data for us, coming from API.
+ * </p>
+ * The idea behind creating this 'CreateUserRequest' class is to make relationships between users and courses
  * In short, the idea is to enroll user into courses.
  * CreateUserRequest class contains all the fields as User (model package) except ID
  */

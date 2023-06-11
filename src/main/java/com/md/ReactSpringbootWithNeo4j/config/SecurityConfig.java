@@ -30,6 +30,7 @@ public class SecurityConfig {
     }
 
     /**
+     *
      * Configures and returns a SecurityFilterChain instance that defines the security policy for the application.
      * The policy is stateless, meaning it does not use HTTP sessions, and uses HTTP Basic authentication.
      * CSRF protection is disabled, and CORS is enabled with default settings.
@@ -52,7 +53,8 @@ public class SecurityConfig {
                 .cors(Customizer.withDefaults())
                 .authorizeHttpRequests(auth->auth
                         .requestMatchers(
-                                "api/v1/auth/me"
+                                "api/v1/auth/me",
+                                "api/v1/enrollments/**"
                         ).authenticated()
                         .anyRequest().permitAll()
                 )
