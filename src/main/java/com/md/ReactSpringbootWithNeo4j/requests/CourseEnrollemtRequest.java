@@ -2,16 +2,16 @@ package com.md.ReactSpringbootWithNeo4j.requests;
 
 public class CourseEnrollemtRequest {
 
-    private String identifier;
+    private String courseIdentifier;
 
     public CourseEnrollemtRequest() {
     }
 
     public String getIdentifier() {
-        return identifier;
+        return courseIdentifier;
     }
 
     public void setIdentifier(String identifier) {
-        this.identifier = identifier;
+        this.courseIdentifier = identifier;
     }
 }
