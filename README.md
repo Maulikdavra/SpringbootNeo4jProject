@@ -63,4 +63,4 @@ Please feel free to fork this repo, make some changes, and submit pull requests.
 
 **Contact**
 
-If you have any queries, please reach out via LinkedIn: linkedin.com/in/maulik-davra-40b427164.
+If you have any queries, please reach out via Linkedin: linkedin.com/in/maulik-davra-40b427164.
