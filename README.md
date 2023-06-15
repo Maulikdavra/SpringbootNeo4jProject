@@ -1,8 +1,8 @@
-SpringbootWithNeo4j
+#SpringbootWithNeo4j
 
 SpringbootWithNeo4j is a simple API powered by Neo4j. The project features a basic CRUD API where a user can enroll in a desired course, and each course has several lessons that come with the course - users don't have to register explicitly for each lesson.
 
-Prerequisites
+##Prerequisites
 
 Java 20
 Maven
@@ -13,7 +13,7 @@ Getting Started
 
 Before testing this project, you need to create an instance from the Neo4j DB and configure the credentials in the Spring Boot application. The next step will be pasting all the queries into the instance you've created in Neo4j. Once you've done all the database setup, you will be able to see the relationship between different nodes. If you're unfamiliar with Neo4j, I would recommend getting familiar with it first before testing out this project - a short video from YouTube should be enough.
 
-API Endpoints
+##API Endpoints
 
 Here are the API endpoints available in this project:
 
@@ -29,7 +29,7 @@ getEnrolledCourses
 GET: http://localhost:8080/api/v1/enrollments/getEnrolledUser
 Feel free to add/test additional feature/endpoints with specific functionality.
 
-Dependencies
+##Dependencies
 
 This project uses a number of dependencies that need to be installed. They are listed in the pom.xml file. Major ones include:
 
@@ -44,10 +44,10 @@ Building & Testing
 
 You can build and test this application using Maven. Make sure to have all the required dependencies installed.
 
-Contributing
+##Contributing
 
 Please feel free to fork this repo, make some changes, and submit pull requests. Bug fixes, feature additions, and updates are welcome!
 
-Contact
+##Contact
 
 If you have any queries, please reach out via LinkedIn: linkedin.com/in/maulik-davra-40b427164.
