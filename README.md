@@ -19,14 +19,19 @@ Here are the API endpoints available in this project:
 
 getAllCourse
 GET: http://localhost:8080/api/v1/courses/
+
 getACourseByIdentifier
 GET: http://localhost:8080/api/v1/courses/PL4LFuHwItvKbdK-ogNsOx2X58hHGeQm8c
+
 getUserNameFromDatabase
 GET: http://localhost:8080/api/v1/auth/me
+
 enrollCourses
 POST: http://localhost:8080/api/v1/enrollments/createEnrollment
+
 getEnrolledCourses
 GET: http://localhost:8080/api/v1/enrollments/getEnrolledUser
+
 Feel free to add/test additional feature/endpoints with specific functionality.
 
 **Dependencies**
