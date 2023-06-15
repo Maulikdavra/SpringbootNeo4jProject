@@ -28,9 +28,13 @@ GET: http://localhost:8080/api/v1/auth/me
 
 enrollCourses
 POST: http://localhost:8080/api/v1/enrollments/createEnrollment
+
 responseBody:
+
             {
+            
                "identifier": "PL4LFuHwItvKaOi-bN1E2WUVyZbuRhVokL"
+               
             }
 
 getEnrolledCourses
