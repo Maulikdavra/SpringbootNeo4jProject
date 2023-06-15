@@ -43,6 +43,11 @@ public class CourseEnrollmentService {
      * @return objects of User and Course class containing information about user and enrolled courses. stored in CourseEnrollmentQueryResult class
      */
     public CourseEnrollmentQueryResult createEnrollment(String username, String identifier){
+            // Making sure if the user trying to enroll a course, hasn't yet enrolled.
+            Boolean enrollmentStatus = getEnrollmentStatus(username, identifier);
+            if(enrollmentStatus){
+                throw new RuntimeException("sorry "+ username + " you can't enroll the course, you have already enrolled yourself");
+            }
         return userRepository.createEnrollmentRelationship(username, identifier);
     }
 

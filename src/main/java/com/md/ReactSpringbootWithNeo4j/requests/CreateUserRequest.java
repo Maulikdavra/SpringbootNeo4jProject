@@ -3,7 +3,6 @@ package com.md.ReactSpringbootWithNeo4j.requests;
 import org.apache.catalina.Store;
 
 /**
- *
  * The idea behind creating below class is to get all the information from user via REST API
  * Later we will be passing that information to User class, and then we will save it to a database.
  * <p>

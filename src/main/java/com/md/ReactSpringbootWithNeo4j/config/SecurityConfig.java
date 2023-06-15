@@ -18,6 +18,15 @@ import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 
 import java.util.Arrays;
 
+/**
+ Configuration class for Spring Security.
+ Configures and returns a SecurityFilterChain instance that defines the security policy for the application.
+ The policy is stateless, uses HTTP Basic authentication, and disables CSRF protection.
+ CORS is enabled with default settings.
+ Requests to "api/v1/auth/me" and "api/v1/enrollments/**" require authentication, while all other requests are permitted without authentication.
+ User details are loaded using the neoUserDetailService (username).
+ Passwords are loaded from the User class in the model package, which implements the UserDetails interface.
+ */
 @Configuration
 @EnableWebSecurity
 public class SecurityConfig {
@@ -30,7 +39,6 @@ public class SecurityConfig {
     }
 
     /**
-     *
      * Configures and returns a SecurityFilterChain instance that defines the security policy for the application.
      * The policy is stateless, meaning it does not use HTTP sessions, and uses HTTP Basic authentication.
      * CSRF protection is disabled, and CORS is enabled with default settings.
@@ -63,6 +71,18 @@ public class SecurityConfig {
                 .build();
     }
 
+    /**
+     Configures and returns a CorsConfigurationSource instance.
+     Defines the allowed origins, methods, credentials, headers, exposed headers, and max age for CORS.
+     The allowed origins are set to "<a href="http://localhost:3000"">...</a>
+     and "<a href="http://127.0.0.1:3000">...</a>".
+     Allowed methods include GET, POST, PATCH, PUT, DELETE, OPTIONS, and HEAD.
+     Credentials are allowed.
+     The allowed headers include Authorization, Request-Type, and Content-Type.
+     The exposed headers include X-Get-Header.
+     The max age is set to 3600 seconds.
+     @return the configured CorsConfigurationSource
+     */
     @Bean
     CorsConfigurationSource corsConfigurationSource(){
         CorsConfiguration corsConfiguration = new CorsConfiguration();
@@ -81,6 +101,11 @@ public class SecurityConfig {
         return urlBasedCorsConfigurationSource;
     }
 
+    /**
+     Configures and returns a PasswordEncoder instance using BCryptPasswordEncoder.
+     BCryptPasswordEncoder is used to encode passwords.
+     @return the configured PasswordEncoder instance
+     */
     @Bean
     PasswordEncoder passwordEncoder(){
         return new BCryptPasswordEncoder();

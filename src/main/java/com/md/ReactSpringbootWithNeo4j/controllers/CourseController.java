@@ -16,6 +16,11 @@ import java.security.Principal;
 import java.util.List;
 import java.util.stream.Collectors;
 
+
+/**
+ * Controller class for managing courses.
+ * Handles endpoints related to courses and provides course information.
+ */
 @RestController
 @RequestMapping("/api/v1/courses")
 public class CourseController {
@@ -32,6 +37,15 @@ public class CourseController {
         this.courseEnrollmentService = courseEnrollmentService;
     }
 
+    /**
+     * Retrieves a list of all courses.
+     * Returns a response containing a list of CourseDTO objects.
+     * Each CourseDTO includes course identifier, title, teacher, and associated lessons.
+     * If the principal (user) is provided, the enrollment status for each course is also included in the response.
+     *
+     * @param principal the principal (user) associated with the request
+     * @return ResponseEntity containing a list of CourseDTO objects
+     */
     @GetMapping("/")
     public ResponseEntity<List<CourseDTO>> courseIndex(Principal principal) {
         List<CourseDTO> responseCourses = courseService.getAllCourses().stream()
@@ -42,7 +56,7 @@ public class CourseController {
                     responseCourse.setTeacher(course.getTeacher());
                     responseCourse.setLesson(lessonService.getAllLessonByCourseIdentifier(course.getIdentifier()));
 
-                    if(principal != null){
+                    if (principal != null) {
                         responseCourse.setEnrolled(courseEnrollmentService.getEnrollmentStatus(principal.getName(), course.getIdentifier()));
                     }
                     return responseCourse;
@@ -52,7 +66,14 @@ public class CourseController {
         return ResponseEntity.ok(responseCourses);
     }
 
-
+    /**
+     * Retrieves details of a specific course.
+     * Returns a response containing a CourseDTO object for the given course identifier.
+     * The CourseDTO includes course identifier, title, teacher, and associated lessons.
+     *
+     * @param identifier the identifier of the course to retrieve
+     * @return ResponseEntity containing the CourseDTO object
+     */
     @GetMapping("/{identifier}")
     public ResponseEntity<CourseDTO> courseDetail(@PathVariable String identifier) {
         Course course = courseService.getCourseByIdentifier(identifier);

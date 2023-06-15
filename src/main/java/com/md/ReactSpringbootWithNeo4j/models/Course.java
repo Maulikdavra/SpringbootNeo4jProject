@@ -3,9 +3,6 @@ package com.md.ReactSpringbootWithNeo4j.models;
 import org.springframework.data.neo4j.core.schema.GeneratedValue;
 import org.springframework.data.neo4j.core.schema.Id;
 import org.springframework.data.neo4j.core.schema.Node;
-import org.springframework.data.neo4j.core.schema.Relationship;
-import java.util.ArrayList;
-import java.util.List;
 
 @Node
 public class Course {
@@ -47,10 +44,4 @@ public class Course {
     public void setTeacher(String teacher) {
         this.teacher = teacher;
     }
-
-    /**
-    public List<Lesson> getLesson() {
-        return lesson;
-    }
-    */
 }
